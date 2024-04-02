@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>체크 박스 만들기</title></head>
+<body>
+<h3>먹고 싶은 것 모두 체크하세요</h3>
+<hr>
+<form>
+	짜장면 <input type="checkbox" value="1">
+	짬뽕 <input type="checkbox" value="2" checked>
+	탕수육 <input type="checkbox" value="3">
+    <!-- name 속성 생략 가능 -->
+</form>
+<br>
+<h3>배열처럼 접근할 수 있는 명명 방식</h3>
+<hr>
+<form>
+    짜장면 <input type="checkbox" name="food" value="1">
+	짬뽕 <input type="checkbox" name="food" value="2" checked>
+	탕수육 <input type="checkbox" name="food" value="3">
+    <!-- name 속성을 food로 모두 통일했지만, value 속성이 각각 다르다! 서버 측에서 food[0], food[1], food[2]접근 가능 -->
+</form>
+</body>
+</html>
