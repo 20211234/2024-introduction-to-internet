@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HTML Practice Website - Developer">
+    <meta name="author" content="장은선">
+    <title>Developer</title>
+</head>
+<body>
+    <header><h1>Who is in there?</h1></header>
+    <!-- left section start -->
+    <section class="left">
+        <nav>
+            <hr />
+            <ul>
+                <li><a href="index.html">Headquarter</a></li>
+                <li><a href="hobby_explorer.html">Hobby Explorer</a></li>
+                <li><a href="party_planner.html">Party Planner</a></li>
+                <li><a href="photographer.html">Photographer</a></li>
+                <li><a href="designer.html">Designer</a></li>
+                <li><b>Developer</b> ← You're in here!</li>
+            </ul>
+        </nav>
+        <aside>
+            <hr />
+            <p><b>Mini Game!</b> Press the <ins>[Space Bar]</ins> to make the dinosaur run!</p>
+            <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="450px" height="300px"></iframe>
+        </aside>
+    </section>
+    <!-- left section end -->
+    <!-- right section start -->
+    <section class="right">
+        <article>
+            <hr />
+            <h2>Developer is in here!</h2>
+            <img src="../img/developer_image_1.png" alt="Github 프로필 화면 이미지" width="450px">
+            <p>누구나 손쉽게 사용할 수 있고, 실생활에 도움이 될 만한 사이트를 제작해보고 싶습니다.<br />인터넷프로그래밍 강의를 통해 학습한 Github 사이트를 활용하여 느리지만 차곡차곡 프로그래밍 학습 기록을 쌓아가고 있습니다.</p>
+            <b>&lt;차후 공부해보고 싶은 기술&gt;</b>
+            <form name="stack form">
+                Frontend: <input type="text" name="frontend" list="fe-stacks"><br />
+                            <datalist id="fe-stacks">
+                                <option value="React">
+                                <option value="Flutter">
+                                <option value="TypeScript">
+                        </datalist>
+                Backend: <input type="text" name="backend" list="be-stacks"><br>
+                        <datalist id="be-stacks">
+                            <option value="Java">
+                            <option value="Springboot">
+                            <option value="Node.js">
+                        </datalist>
+                </form>
+            <hr />
+        </article>
+    </section>
+    <!-- right section end -->
+    <footer>© 2024. 장은선. All rights reserved.</footer>
+</body>
+</html>

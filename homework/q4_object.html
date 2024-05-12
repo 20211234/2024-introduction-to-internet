@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>(4) 객체 만들기</title>
+</head>
+<body>
+<h3>(4) 객체 만들기</h3>
+<hr>
+<script>
+    // Route A. new Object 이용
+    let A_book = new Object(); 
+    A_book.title = "HTML5"; 
+    A_book.author = "황기태";
+    A_book.price = 20000;
+
+    document.write("(Route A) Book: ");
+    document.write(A_book.title + ", ");
+    document.write(A_book.author + ", ");
+    document.write(A_book.price + "<br />");
+
+    // Route B. 리터럴 표기법 이용
+    let B_book = {
+        title : "HTML5", 
+        author : "황기태",
+        price : 20000
+    };
+
+    document.write("(Route B) Book: ");
+    document.write(B_book.title + ", ");
+    document.write(B_book.author + ", ");
+    document.write(B_book.price + "<br />");
+
+    // Route C. 프로토타입 이용
+    function C_Book() {
+        this.title = "HTML5";
+        this.author = "황기태";
+        this.price = 20000;
+    }
+    
+    let bookC = new C_Book();
+    
+    document.write("(Route C) Book: ");
+    document.write(bookC.title + ", ");
+    document.write(bookC.author + ", ");
+    document.write(bookC.price + "<br />");
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>(3) 실습실 자리배치도 만들기</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h3>(3) 실습실 자리배치도 만들기</h3>
+<hr>
+<script>
+    let totalStudents = prompt("수강생은 총 몇 명입니까?");
+    let studentsPerRow = prompt("한 줄에 몇 명씩 앉습니까?")
+    let row = Math.ceil(totalStudents / studentsPerRow);
+
+    document.write('<table>');
+    let computerNumber = 1;
+    for (let i = 0; i < row; i++) {
+        document.write('<tr>');
+        for (let j = 0; j < studentsPerRow; j++) {
+            if (computerNumber <= totalStudents) {
+                document.write("<td>컴퓨터" + computerNumber + "번</td>");
+                computerNumber++;
+            }
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>(2) 과일 뽑기</title>
+</head>
+<body>
+<h3>(2) 과일 뽑기</h3>
+<hr>
+<button type="button" class="btn">뽑기</button>
+<script>
+    const fruits = ["딸기🍓", "수박🍉", "포도🍇", "사과🍎", "귤🍊"];
+    const btn = document.querySelector('.btn');
+    
+    btn.addEventListener('click', function() {
+        const index = Math.floor(Math.random() * fruits.length);
+        alert(fruits[index]);
+    });
+</script>
+</body>
+</html>
