@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM의 이벤트 속성에 리스너 지정</title>
+    <script>
+        function showMe() {
+            alert("클릭");
+        }
+        window.onload = function() {
+            let target = document.getElementById('target');
+
+            // 이벤트 연결
+            target.onclick = showMe;
+        }
+    </script>
+
+</head>
+<body>
+    <button id="target">click me!</button>
+</body>
+</html>
