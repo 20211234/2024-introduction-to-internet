@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마우스 클릭</title>
+<script>
+let ctx;
+let canvas;
+
+let x = 10;
+let y = 10;
+let w = 100;
+let h = 100;
+
+function init() {
+	canvas = document.getElementById('canvas');
+	ctx = canvas.getContext('2d');
+	canvas.addEventListener('click', choose, false);
+
+	ctx.fillStyle="rgb(0, 255, 0)";
+	ctx.fillRect(x, y, w, h);
+}
+function choose(ev) {
+	let mx = ev.offsetX;
+	let my = ev.offsetY;
+
+	if (/* 사각 내부인지 확인 */) {
+		ctx.fillStyle = "rgb(255, 0, 0)";
+		ctx.fillRect(x, y, w, h);
+	} else {
+		ctx.fillStyle = "rgb(0, 0, 255)";
+		ctx.fillRect(x, y, w, h);
+	}
+}
+</script>
+</head>
+<body onLoad="init();">
+<canvas id="canvas" width="900" height="400">
+	이 브라우저는 HTML5의 canvas 요소를 지원하지 않습니다.
+</canvas>
+</body>
+</html>

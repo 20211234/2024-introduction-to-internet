@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Craps game</title>
+<script>
+let cWidth = 400, cHeight = 300;
+let diceX = 50, diceY = 50;
+let diceWidth = 100, diceHeight = 100;
+let dotRad = 6;
+
+let ctx;
+let dx, dy;
+let firstTurn = true;
+let point;
+
+function throwDice() {
+	let sum;
+
+	let ch = 1+Math.floor(Math.random()*6);
+	sum = ch;
+	dx = diceX;
+	dy = diceY;
+	// ch를 갖는 첫 번째 주사위의 윗면 그리기
+
+	dx = diceX + 150;
+	ch=1 + Math.floor(Math.random()*6);
+	sum += ch;
+	// ch를 갖는 두 번째 주사위의 윗면 그리기
+
+	if (firstTurn) {
+		switch (sum) {
+		case 7:
+		case 11:
+			document.f.outcome.value="이겼습니다!";
+			break;
+
+		case 2:
+		case 3:
+		case 12:
+			document.f.outcome.value="졌습니다!";
+			break;
+
+		default:
+			point = sum;
+			document.f.pv.value=point;
+			firstTurn = false;
+			document.f.stage.value="다시 던지세요.";
+			document.f.outcome.value="   ";
+		}
+	}
+	else {
+		switch(sum) {
+		case point:
+		   document.f.outcome.value="이겼습니다!";
+		   document.f.stage.value="새로 시작.";
+		   document.f.pv.value=" ";
+		   firstTurn = true;
+		   break;
+
+		case 7:
+		   document.f.outcome.value="졌습니다!";
+		   document.f.stage.value="새로 시작.";
+		   document.f.pv.value=" ";
+		   firstTurn = true;
+		}
+	}
+}
+
+function drawFace(n) {
+	ctx = document.getElementById('canvas').getContext('2d');
+	ctx.lineWidth = 5;
+	ctx.clearRect(dx,dy,diceWidth,diceHeight);
+	ctx.strokeRect(dx,dy,diceWidth,diceHeight)
+	ctx.fillStyle = "#009966";
+
+	switch(n) {
+	case 1:
+		break;
+
+	case 2:
+		break;
+
+	case 3:
+		break;
+
+	case 4:
+		break;
+
+	case 5:
+		break;
+
+	case 6:
+		break;
+	}
+}
+
+function draw1() {
+	ctx.beginPath();
+
+	let dotX = dx + .5*diceWidth;
+	let dotY = dy + .5*diceHeight;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	ctx.closePath();
+	ctx.fill();
+}
+
+function draw2() {
+	ctx.beginPath();
+
+	let dotX = dx + 3*dotRad;
+	let dotY = dy + 3*dotRad;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	dotX = dx+diceWidth-3*dotRad;
+	dotY = dy+diceHeight-3*dotRad;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	ctx.closePath();
+	ctx.fill();
+}
+
+function draw4() {
+	ctx.beginPath();
+
+	let dotX = dx + 3*dotRad;
+	let dotY = dy + 3*dotRad;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	dotX = dx+diceWidth-3*dotRad;
+	dotY = dy+diceHeight-3*dotRad;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+
+	dotX = dx + 3*dotRad;
+	dotY = dy + diceHeight-3*dotRad;  // 변동 없음
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	dotX = dx+diceWidth-3*dotRad;
+	dotY = dy+ 3*dotRad;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	ctx.closePath();
+	ctx.fill();
+}
+
+function draw2mid() {
+	ctx.beginPath();
+
+	let dotX = dx + 3*dotRad;
+	let dotY = dy + .5*diceHeight;
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	dotX = dx+diceWidth-3*dotRad;
+	dotY = dy + .5*diceHeight; // 변동 없음
+	ctx.arc(dotX,dotY,dotRad,0,Math.PI*2,true);
+
+	ctx.closePath();
+	ctx.fill();
+}
+</script>
+</head>
+<body>
+<canvas id="canvas" width="400" height="300">
+이 브라우저에서는 HTML5의 canvas가 지원되지 않습니다.
+</canvas>
+<br>
+<button onClick="throwDice();">주사위 던지기</button>
+<form name="f" id="f">
+판: <input name="stage" value="첫 번째 던지기">
+포인트: <input name="pv" value="   ">
+결과: <input name="outcome" value="     ">
+</form>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>입력을 받는 공 튀기기</title>
+<style>
+form {
+	width:320px;
+	margin:15px;
+	background-color:lightblue;
+	padding:20px;
+}
+input:valid {background:lightgreen;}
+input:invalid {background:red;}
+</style>
+
+<script>
+let ballrad = 10;
+
+let boxx = 20;
+let boxy = 30;
+let boxwidth = 350;
+let boxheight = 250;
+
+let boxboundx = boxwidth+boxx-ballrad;
+let boxboundy = boxheight+boxy-ballrad;
+let inboxboundx = boxx+ballrad;
+let inboxboundy = boxy+ballrad;
+
+let ballx = 50;
+let bally = 60;
+let ballvx = 4;
+let ballvy = 8;
+
+let ctx;
+
+function init(){
+	ctx = document.getElementById('canvas').getContext('2d');
+	ctx.lineWidth = ballrad;
+	ctx.fillStyle ="#FF0000";
+	// 주기적으로 moveball 호출
+}
+function moveball(){
+	ctx.clearRect(boxx,boxy,boxwidth,boxheight);
+
+	// 공의 새 위치 계산
+
+	ctx.beginPath();
+	ctx.arc(ballx, bally, ballrad,0,Math.PI*2,true);
+	ctx.fill();
+
+	ctx.strokeRect(boxx,boxy,boxwidth,boxheight);
+}
+function moveandcheck() {
+	let nballx = ballx + ballvx;
+	let nbally = bally + ballvy;
+
+	if (/* 새 x위치가 오른쪽 내부 영역 한계를 벗어났으면 */) {
+		ballvx = -ballvx;
+		nballx = boxboundx;
+	}
+	if (/* 새 x위치가 왼쪽 내부 영역 한계를 벗어났으면 */) {
+		nballx = inboxboundx
+		ballvx = -ballvx;
+	}
+	if (/* 새 y위치가 아래쪽 내부 영역 한계를 벗어났으면 */) {
+		nbally = boxboundy;
+		ballvy = -ballvy;
+	}
+	if (/* 새 y위치가 위쪽 내부 영역 한계를 벗어났으면 */) {
+		nbally = inboxboundy;
+		ballvy = -ballvy;
+	}
+	ballx = nballx;
+	bally = nbally;
+}
+function change() {
+	ballvx = parseInt(f.hv.value);
+	ballvy = parseInt(f.vv.value);
+	return false;
+}
+</script>
+</head>
+
+<body onLoad="init();">
+<canvas id="canvas" width="400" height="300">
+	이 브라우저에서는 HTML5의 canvas 요소가 지원되지 않습니다.
+</canvas>
+<br>
+<form name="f" id="f" onSubmit="return change();">
+	수평 속도 <input name="hv" id="hv" value="4" type="number" min="-10" max="10"><br>
+	수직 속도 <input name="vv" id="vv" value="8" type="number" min="-10" max="10">
+	<input type="submit" value="변경">
+</form>
+</body>
+</html>
